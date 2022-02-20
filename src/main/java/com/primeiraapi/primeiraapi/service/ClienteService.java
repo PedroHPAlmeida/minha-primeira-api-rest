@@ -3,6 +3,7 @@ package com.primeiraapi.primeiraapi.service;
 import com.primeiraapi.primeiraapi.entity.Cliente;
 import com.primeiraapi.primeiraapi.repository.IClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,10 @@ public class ClienteService {
 
     public Optional<Cliente> buscarClientePorId(Long id){
         return clienteRepository.findById(id);
+    }
+
+    public Optional<Cliente> buscarClientePorNome(Cliente cliente){
+        return clienteRepository.findByNome(cliente.getNome());
     }
 
     public void removerClientePorId(Long id){

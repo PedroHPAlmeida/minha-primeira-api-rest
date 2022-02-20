@@ -50,6 +50,13 @@ public class ClienteController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
 
+    @GetMapping(path = "/nome")
+    @ResponseStatus(HttpStatus.OK)
+    public Cliente buscarClientePorNome(@RequestBody Cliente cliente){
+        return clienteService.buscarClientePorNome(cliente)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
+    }
+
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerClientePorId(@PathVariable("id") Long id){
@@ -59,4 +66,5 @@ public class ClienteController {
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
+
 }
