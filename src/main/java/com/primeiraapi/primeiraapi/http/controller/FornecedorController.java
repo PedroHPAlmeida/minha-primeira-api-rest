@@ -50,6 +50,13 @@ public class FornecedorController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado."));
     }
 
+    @GetMapping(path = "/nome")
+    @ResponseStatus(HttpStatus.OK)
+    public Fornecedor buscarFornecedorPorNome(@RequestBody Fornecedor fornecedor){
+        return fornecedorService.buscarFornecedorPorNome(fornecedor)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado."));
+    }
+
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerFornecedorPorId(@PathVariable("id") Long id){
