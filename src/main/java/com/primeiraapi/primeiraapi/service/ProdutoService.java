@@ -24,6 +24,10 @@ public class ProdutoService {
         return produtoRepository.findById(id);
     }
 
+    public Optional<Produto> buscarProdutoPorNome(Produto produto){
+        return produtoRepository.findByNome(produto.getNome());
+    }
+
     public void removerPorId(Long id){
         produtoRepository.deleteById(id);
     }

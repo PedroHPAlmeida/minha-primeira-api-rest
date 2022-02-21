@@ -50,6 +50,13 @@ public class ProdutoController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado."));
     }
 
+    @GetMapping(path = "/nome")
+    @ResponseStatus(HttpStatus.OK)
+    public Produto buscarProdutoPorNome(@RequestBody Produto produto){
+        return produtoService.buscarProdutoPorNome(produto)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado."));
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerProduto(@PathVariable("id") Long id){
